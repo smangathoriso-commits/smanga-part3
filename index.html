@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EcoGreen Solutions is dedicated to driving environmental sustainability and fostering community action.">
+<meta name="keywords" content="EcoGreen, sustainability, environment, green energy, community, donate, membership">
+<meta name="author" content="EcoGreen Solutions">
+<title>EcoGreen Solutions </title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="header">
+    <h1>EcoGreen Solutions</h1>
+                <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="/pages/about.html">About Us</a>
+                <a href="./page/events.html">Events</a>
+                <a href="./page/blog.html">Blog</a>
+                <a href="./page/donate.html">Donate</a>
+                <a href="./page/membership.html">Membership</a>
+                <a href="./page/contact.html">Contact</a>
+</nav>
+</header>
+    
+    <main>    
+        <section class="hero">
+            <h2>Promoting Sustainable Living</h2>
+            <p>Join us in creating a greener future through education, community action, and sustainable practices that benefit both people and the planet.</p>
+          
+        </section>
+        
+        <section class="events">
+            <h2>Upcoming Events</h2>
+            <div class="event-list">
+                <div class="event-card">
+                    <h3>Community Clean-Up Day</h3>
+                    <p class="event-date">October 15, 2025 | 9:00 AM - 12:00 PM</p>
+                    <p>Join fellow community members as we clean up our local parks and waterways. All supplies provided.</p>
+                </div>
+                <div class="event-card">
+                    <h3>Urban Gardening Workshop</h3>
+                    <p class="event-date">November 5, 2025 | 10:00 AM - 1:00 PM</p>
+                    <p>Learn how to grow your own food in small spaces. Perfect for apartment dwellers and urban residents.</p>
+                </div>
+                <div class="event-card">
+                    <h3>Sustainable Living Fair</h3>
+                    <p class="event-date">December 3, 2025 | 11:00 AM - 4:00 PM</p>
+                    <p>Explore eco-friendly products, attend informative talks, and connect with local sustainability organizations.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="resources">
+            <h2>Resources</h2>
+            <div class="resource-list">
+                <div class="resource-card">
+                    <h3>Sustainable Living Toolkit</h3>
+                    <p>A comprehensive guide to reducing your environmental footprint in everyday life.</p>
+                    <a href="" class="resource-link"></a>
+                </div>
+                <div class="resource-card">
+                    <h3>Home Energy Audit Guide</h3>
+                    <p>Learn how to identify energy waste in your home and implement cost-saving solutions.</p>
+                    <a href="#" class="resource-link"></a>
+                </div>
+                <div class="resource-card">
+                    <h3>Zero Waste Kitchen Tips</h3>
+                    <p>Practical strategies for reducing food waste and packaging in your kitchen.</p>
+                    <a href="#" class="resource-link"></a>
+                </div>
+                <div class="resource-card">
+                    <h3>Community Composting Guide</h3>
+                    <p>Everything you need to know to start or join a community composting program.</p>
+                    <a href="#" class="resource-link"></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+<footer class="footer">
+            <div class="contact-info">
+        <div class="card time-card">
+            <h3>Current Date & Time</h3>
+            <p id="currentDateTime"></p>
+        </div>
+    </div>
+    <p class="social-links">
+        Follow us: 
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> | 
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> | 
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
+
+    <p class="copyright">
+        &copy; <span id="currentYear"></span> EcoGreen Solutions. All rights reserved.
+    </p>
+</footer>
+
+    <script>
+
+        // Tier selection functionality
+        document.querySelectorAll('.tier-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tierCard = this.closest('.tier-card');
+                const tierName = tierCard.querySelector('.tier-name').textContent;
+                
+                // Set the membership level in the form
+                document.getElementById('membership-level').value = tierName.toLowerCase();
+                
+                // Scroll to the membership form
+                document.querySelector('.membership-form-container').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Change the plus/minus icon
+                const icon = question.querySelector('span');
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Membership form submission
+        document.querySelector('.membership-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const level = document.getElementById('membership-level').options[document.getElementById('membership-level').selectedIndex].text;
+            
+            alert(`Thank you, ${name}! Your ${level} membership application has been received. A confirmation has been sent to ${email}.`);
+            
+            // Reset the form
+            this.reset();
+        });
+
+
+        document.getElementByld('currentYear').txtContent= new Data().getFullYear();
+
+    // Function to update current date and time
+function updateDateTime() {
+    const currentDateTime = document.getElementById("currentDateTime");
+    const currentYear = document.getElementById("currentYear");
+    
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString();  // Format the date
+    const formattedTime = now.toLocaleTimeString();  // Format the time
+    const year = now.getFullYear();  // Get the current year
+    
+    // Set the content
+    currentDateTime.textContent = formattedDate + " " + formattedTime;  // Combine date and time
+    currentYear.textContent = year;
+}
+
+// Ensure the script runs after the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    updateDateTime();  // Update date and time on page load
+    setInterval(updateDateTime, 60000);  // Update every 60 seconds (1 minute)
+});
+    </script>
+</body>
+</html>
